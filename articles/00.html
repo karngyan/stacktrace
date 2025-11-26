@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stacktrace #00 - The Bool That Holds Go's Ecosystem Hostage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Figtree", sans-serif;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              figtree: ["Figtree", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                dark: "#09090b",
+                darker: "#030303",
+                accent: "#10b981",
+                accent2: "#34d399",
+                muted: "#52525b",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-zinc-950 min-h-screen p-8">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <!-- Header -->
+      <div class="flex items-center justify-between">
+        <div>
+          <a
+            href="../index.html"
+            class="text-zinc-500 text-sm hover:text-zinc-300 mb-2 inline-block"
+            >← Back to Brand</a
+          >
+          <h1 class="text-white text-2xl font-bold">Stacktrace #00</h1>
+          <p class="text-zinc-500 text-sm mt-1">
+            The Bool That Holds Go's Ecosystem Hostage
+          </p>
+          <a
+            href="00.md"
+            class="text-emerald-400 text-sm hover:text-emerald-300 mt-2 inline-block"
+            >→ View Content (.md)</a
+          >
+        </div>
+        <div class="text-zinc-600 text-sm font-mono">golang/go</div>
+      </div>
+
+      <!-- DARK POSTER -->
+      <div>
+        <h2 class="text-white text-lg mb-4">Dark Style (600x600)</h2>
+
+        <div
+          id="poster-dark"
+          class="w-[600px] h-[600px] bg-brand-dark relative overflow-hidden flex flex-col justify-between p-10"
+          style="background: linear-gradient(145deg, #09090b 0%, #0f0f12 100%)"
+        >
+          <!-- Code lines decoration -->
+          <div
+            class="absolute top-0 right-0 w-64 h-full opacity-5 font-mono text-sm text-brand-accent leading-relaxed p-4 overflow-hidden"
+          >
+            func heapObjectsCanMove() bool {<br />
+            &nbsp;&nbsp;return false<br />
+            }<br /><br />
+            // Notable members of the<br />
+            // hall of shame include:<br />
+            // - github.com/bytedance<br />
+            // - gvisor.dev/gvisor<br /><br />
+            //go:linkname<br />
+            func legacyTimeAbs()
+          </div>
+
+          <!-- Top section -->
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="text-brand-accent text-sm font-bold tracking-wider">
+                STACKTRACE
+              </div>
+              <div class="flex-1 h-px bg-zinc-800"></div>
+              <div class="text-zinc-600 text-sm font-mono">#00</div>
+            </div>
+          </div>
+
+          <!-- Main title -->
+          <div class="relative z-10 flex-1 flex flex-col justify-center">
+            <h1 class="text-white text-4xl font-extrabold leading-tight mb-5">
+              The Bool That<br />
+              <span class="text-brand-accent">Holds Go's Ecosystem</span><br />
+              Hostage
+            </h1>
+            <p class="text-zinc-500 text-lg leading-relaxed">
+              One function. Always returns false.<br />
+              If flipped, breaks thousands of packages.
+            </p>
+          </div>
+
+          <!-- Bottom section -->
+          <div class="relative z-10 flex justify-between items-end">
+            <div class="flex items-center gap-3">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D5603AQFHIgOiqEDSNQ/profile-displayphoto-shrink_800_800/B56ZYpjyJKHQAc-/0/1744453969775?e=1766016000&v=beta&t=ESRbMnoMriJeOwFpLl7vG1yFCb4VkYKK7_ajnjDxXRE"
+                alt="@karngyan"
+                class="w-12 h-12 rounded-full object-cover"
+              />
+              <div class="text-zinc-500 text-sm">@karngyan</div>
+            </div>
+            <div class="text-zinc-600 text-sm font-mono">golang/go</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIGHT POSTER -->
+      <div>
+        <h2 class="text-white text-lg mb-4">Light Style (600x600)</h2>
+
+        <div
+          id="poster-light"
+          class="w-[600px] h-[600px] bg-white relative overflow-hidden flex flex-col justify-between p-10"
+        >
+          <!-- Accent bar -->
+          <div
+            class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-emerald-500 to-emerald-300"
+          ></div>
+
+          <!-- Top section -->
+          <div class="relative z-10">
+            <div class="text-emerald-600 text-sm font-bold tracking-wider">
+              STACKTRACE #00
+            </div>
+          </div>
+
+          <!-- Main title -->
+          <div class="relative z-10 flex-1 flex flex-col justify-center">
+            <h1
+              class="text-neutral-900 text-4xl font-extrabold leading-tight mb-4"
+            >
+              The Bool That Holds Go's Ecosystem Hostage
+            </h1>
+            <p class="text-neutral-500 text-lg leading-relaxed">
+              One function. Always returns false. If flipped, breaks thousands
+              of packages.
+            </p>
+          </div>
+
+          <!-- Code snippet -->
+          <div
+            class="relative z-10 bg-zinc-100 rounded-xl p-5 font-mono text-base text-zinc-700 mb-6"
+          >
+            <span class="text-emerald-700">func</span> heapObjectsCanMove()
+            <span class="text-emerald-600">bool</span> {<br />
+            &nbsp;&nbsp;<span class="text-emerald-700">return</span>
+            <span class="text-amber-600">false</span><br />
+            }
+          </div>
+
+          <!-- Bottom section -->
+          <div class="relative z-10 flex justify-between items-center">
+            <div class="text-zinc-400 text-sm">by @karngyan</div>
+            <div class="text-zinc-400 text-sm font-mono">
+              src/runtime/mgc.go
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SQUARE SOCIAL (for Instagram/Twitter) -->
+      <div>
+        <h2 class="text-white text-lg mb-4">Square Social (600x600)</h2>
+
+        <div
+          id="poster-social"
+          class="w-[600px] h-[600px] bg-brand-dark relative overflow-hidden flex flex-col justify-center items-center p-10"
+          style="
+            background: linear-gradient(
+              145deg,
+              #09090b 0%,
+              #0c0c0e 50%,
+              #09090b 100%
+            );
+          "
+        >
+          <!-- Grid pattern overlay -->
+          <div
+            class="absolute inset-0 opacity-10"
+            style="
+              background-image: linear-gradient(
+                  rgba(16, 185, 129, 0.3) 1px,
+                  transparent 1px
+                ),
+                linear-gradient(
+                  90deg,
+                  rgba(16, 185, 129, 0.3) 1px,
+                  transparent 1px
+                );
+              background-size: 40px 40px;
+            "
+          ></div>
+
+          <!-- Glow effect -->
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full opacity-20"
+            style="
+              background: radial-gradient(circle, #10b981 0%, transparent 70%);
+            "
+          ></div>
+
+          <!-- Content -->
+          <div class="relative z-10 text-center">
+            <div
+              class="text-brand-accent text-sm font-bold tracking-wider mb-6"
+            >
+              STACKTRACE #00
+            </div>
+            <h1
+              class="text-white text-4xl font-black tracking-tight mb-6 leading-tight"
+            >
+              The Bool That<br />Holds Go's Ecosystem<br />Hostage
+            </h1>
+            <div class="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
+            <p class="text-zinc-500 text-base leading-relaxed mb-8">
+              One function. Always returns false.<br />
+              If flipped, breaks thousands of packages.
+            </p>
+            <div class="text-brand-muted text-sm font-mono">by @karngyan</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WIDE BANNER (for Twitter/LinkedIn header) -->
+      <div>
+        <h2 class="text-white text-lg mb-4">Wide Banner (1200x600)</h2>
+
+        <div
+          id="poster-banner"
+          class="w-[1200px] h-[600px] bg-brand-dark relative overflow-hidden flex p-12"
+          style="background: linear-gradient(145deg, #09090b 0%, #0f0f12 100%)"
+        >
+          <!-- Code lines decoration -->
+          <div
+            class="absolute top-0 right-0 w-96 h-full opacity-5 font-mono text-base text-brand-accent leading-relaxed p-6 overflow-hidden"
+          >
+            func heapObjectsCanMove() bool {<br />
+            &nbsp;&nbsp;return false<br />
+            }<br /><br />
+            // Notable members of the<br />
+            // hall of shame include:<br />
+            // - github.com/bytedance<br />
+            // - gvisor.dev/gvisor<br /><br />
+            //go:linkname<br />
+            func legacyTimeAbs()<br /><br />
+            // This function is used by<br />
+            // reflect and unsafe packages
+          </div>
+
+          <!-- Left content -->
+          <div
+            class="relative z-10 flex flex-col justify-between flex-1 max-w-2xl"
+          >
+            <div class="flex items-center gap-3">
+              <div class="text-brand-accent text-base font-bold tracking-wider">
+                STACKTRACE
+              </div>
+              <div class="w-24 h-px bg-zinc-800"></div>
+              <div class="text-zinc-600 text-base font-mono">#00</div>
+            </div>
+
+            <div>
+              <h1 class="text-white text-5xl font-extrabold leading-tight mb-6">
+                The Bool That<br />
+                <span class="text-brand-accent">Holds Go's Ecosystem</span
+                ><br />
+                Hostage
+              </h1>
+              <p class="text-zinc-500 text-xl leading-relaxed max-w-lg">
+                One function. Always returns false.<br />
+                If flipped, breaks thousands of packages.
+              </p>
+            </div>
+
+            <div class="flex justify-between items-end">
+              <div class="flex items-center gap-3">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D5603AQFHIgOiqEDSNQ/profile-displayphoto-shrink_800_800/B56ZYpjyJKHQAc-/0/1744453969775?e=1766016000&v=beta&t=ESRbMnoMriJeOwFpLl7vG1yFCb4VkYKK7_ajnjDxXRE"
+                  alt="@karngyan"
+                  class="w-14 h-14 rounded-full object-cover"
+                />
+                <div class="text-zinc-500 text-base">@karngyan</div>
+              </div>
+              <div class="text-zinc-600 text-base font-mono">golang/go</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LINKEDIN COVER (for article cover photo) -->
+      <div>
+        <h2 class="text-white text-lg mb-4">LinkedIn Cover (1920x1080)</h2>
+
+        <div
+          id="poster-linkedin-cover"
+          class="w-[1920px] h-[1080px] bg-[#0a0a0a] relative overflow-hidden flex items-center justify-center"
+        >
+          <!-- Centered container, left-aligned code inside -->
+          <div class="font-mono text-left">
+            <div class="text-zinc-700 text-4xl mb-6">
+              //go:linkname heapObjectsCanMove
+            </div>
+            <div class="text-7xl leading-snug">
+              <span class="text-zinc-500">func </span
+              ><span class="text-zinc-300">heapObjectsCanMove</span
+              ><span class="text-zinc-600">()</span
+              ><span class="text-zinc-500"> bool</span
+              ><span class="text-zinc-600"> {</span>
+            </div>
+            <div class="text-7xl leading-snug pl-20 my-8">
+              <span class="text-zinc-500">return </span
+              ><span class="text-emerald-500">false</span>
+            </div>
+            <div class="text-zinc-600 text-7xl">}</div>
+            <div class="text-zinc-700 text-2xl mt-12">
+              src/runtime/mgc.go:175
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="border-t border-zinc-800 my-16"></div>
+      <h2 class="text-white text-xl font-semibold mb-8">Blog Visuals</h2>
+
+      <!-- VISUAL #1: Code Comment Screenshot -->
+      <div>
+        <h3 class="text-zinc-400 text-sm mb-4">Code Comment</h3>
+
+        <div
+          id="visual-comment"
+          class="w-[720px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="text-zinc-600 text-xs font-mono mb-4">
+            src/runtime/mgc.go:157-172
+          </div>
+
+          <div class="font-mono text-sm leading-relaxed text-zinc-500">
+            <div>
+              // heapObjectsCanMove always returns false in the current garbage
+              collector.
+            </div>
+            <div>
+              // It exists for go4.org/unsafe/assume-no-moving-gc, which is an
+            </div>
+            <div class="text-zinc-300">
+              // <span class="underline">unfortunate idea</span> that had an
+              <span class="underline">even more unfortunate implementation</span
+              >.
+            </div>
+            <div>
+              // Every time a new Go release happened, the package stopped
+              building,
+            </div>
+            <div>
+              // and the authors had to add a new file with a new //go:build
+              line...
+            </div>
+            <div class="mt-2">//</div>
+            <div class="text-zinc-300">
+              // If the Go garbage collector ever does move heap objects,
+            </div>
+            <div class="text-zinc-300">
+              // we can set this to true to
+              <span class="text-white font-medium">break all the programs</span>
+            </div>
+            <div class="text-zinc-300">// using assume-no-moving-gc.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #2: The Function -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">The Function</h3>
+
+        <div
+          id="visual-function"
+          class="w-[480px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="font-mono text-base leading-loose">
+            <div class="text-zinc-600">//go:linkname heapObjectsCanMove</div>
+            <div>
+              <span class="text-zinc-500">func</span>
+              <span class="text-white">heapObjectsCanMove</span
+              ><span class="text-zinc-600">()</span>
+              <span class="text-zinc-500">bool</span>
+              <span class="text-zinc-600">{</span>
+            </div>
+            <div class="pl-6">
+              <span class="text-zinc-500">return</span>
+              <span class="text-emerald-500">false</span>
+            </div>
+            <div class="text-zinc-600">}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #3: Dependency Chain -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">Dependency Chain</h3>
+
+        <div
+          id="visual-cascade"
+          class="w-[500px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="flex flex-col items-center gap-2 font-mono text-sm">
+            <div class="text-zinc-400 py-2">your-package</div>
+            <div class="text-zinc-700">↓</div>
+            <div class="text-zinc-500 py-2">inet.af/netaddr</div>
+            <div class="text-zinc-700">↓</div>
+            <div class="text-zinc-500 py-2">go4.org/intern</div>
+            <div class="text-zinc-700">↓</div>
+            <div class="text-red-400 py-2 border-b border-red-400/30 pb-3">
+              go4.org/unsafe/assume-no-moving-gc
+            </div>
+            <div class="text-zinc-600 text-xs mt-2">breaks every release</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #4: The Quote -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">The Quote</h3>
+
+        <div
+          id="visual-nuclear"
+          class="w-[600px] bg-[#0a0a0a] p-10 border border-zinc-800"
+        >
+          <blockquote class="text-zinc-300 text-xl leading-relaxed">
+            "we can set this to <span class="text-white">true</span> to
+            <span class="text-white">break all the programs</span>"
+          </blockquote>
+          <div class="text-zinc-600 text-sm mt-4 font-mono">
+            — src/runtime/mgc.go
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #5: Hall of Shame -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">Hall of Shame</h3>
+
+        <div
+          id="visual-shame"
+          class="w-[420px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="text-zinc-300 text-sm font-medium mb-6">
+            Packages called out in Go's source
+          </div>
+
+          <div class="space-y-3 font-mono text-sm">
+            <div class="flex justify-between">
+              <span class="text-zinc-500">gvisor.dev/gvisor</span>
+              <span class="text-zinc-400">12×</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-zinc-500">github.com/bytedance/sonic</span>
+              <span class="text-zinc-400">6×</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-zinc-500">github.com/bytedance/gopkg</span>
+              <span class="text-zinc-400">6×</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #6: GC Explainer -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">Garbage Collection</h3>
+
+        <div
+          id="visual-gc-explainer"
+          class="w-[640px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <div class="text-zinc-500 text-xs uppercase tracking-wide mb-3">
+                Manual (C, C++)
+              </div>
+              <div class="font-mono text-xs text-zinc-600 leading-relaxed">
+                ptr = malloc(100);<br />
+                // use it<br />
+                free(ptr);<br />
+                <span class="text-red-400">free(ptr); // crash</span>
+              </div>
+            </div>
+            <div>
+              <div class="text-zinc-500 text-xs uppercase tracking-wide mb-3">
+                With GC (Go, Java)
+              </div>
+              <div class="font-mono text-xs text-zinc-600 leading-relaxed">
+                obj := &Thing{}<br />
+                // use it<br />
+                <span class="text-emerald-500">// done, GC handles it</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-zinc-800 mt-6 pt-4">
+            <div class="text-zinc-500 text-xs">
+              Some GCs move objects in memory. Go's doesn't—yet.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #7: Lessons -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">Lessons</h3>
+
+        <div
+          id="visual-lessons"
+          class="w-[560px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="space-y-4 text-sm">
+            <div class="flex gap-4">
+              <span class="text-zinc-600 w-4">1</span>
+              <span class="text-zinc-400"
+                >Internal APIs aren't internal if they're useful</span
+              >
+            </div>
+            <div class="flex gap-4">
+              <span class="text-zinc-600 w-4">2</span>
+              <span class="text-zinc-400"
+                >Breaking changes cascade faster than you think</span
+              >
+            </div>
+            <div class="flex gap-4">
+              <span class="text-zinc-600 w-4">3</span>
+              <span class="text-zinc-400"
+                >Stable wrong beats unstable right</span
+              >
+            </div>
+            <div class="flex gap-4">
+              <span class="text-zinc-600 w-4">4</span>
+              <span class="text-zinc-400">Document your escape hatches</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INSTRUCTIONS -->
+      <div class="bg-zinc-900 rounded-lg p-6 text-zinc-300 text-sm mt-12">
+        <h3 class="font-bold text-white mb-2">How to Export</h3>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>Right-click on a poster/visual → Inspect</li>
+          <li>Right-click the element → Capture node screenshot</li>
+          <li>
+            Or use a browser extension like "GoFullPage" or "Awesome Screenshot"
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>
