@@ -365,6 +365,29 @@
               >
             </div>
           </div>
+          <div class="bg-zinc-900 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <div class="text-emerald-400 text-xs font-mono mb-1">#01</div>
+                <div class="text-white font-semibold">
+                  The Hidden Message in SQLite's Random Number Generator
+                </div>
+                <div class="text-zinc-500 text-sm mt-1">sqlite/sqlite</div>
+              </div>
+            </div>
+            <div class="flex gap-4 text-sm">
+              <a
+                href="articles/01.html"
+                class="text-emerald-400 hover:text-emerald-300 transition-colors"
+                >→ Posters</a
+              >
+              <a
+                href="articles/01.md"
+                class="text-zinc-400 hover:text-zinc-300 transition-colors"
+                >→ Content (.md)</a
+              >
+            </div>
+          </div>
           <!-- Add more articles here as you create them -->
         </div>
       </div>
@@ -373,12 +396,22 @@
       <div class="bg-zinc-900 rounded-lg p-6 text-zinc-300 text-sm">
         <h3 class="font-bold text-white mb-2">How to Export</h3>
         <ol class="list-decimal list-inside space-y-1">
-          <li>Right-click on a poster → Inspect</li>
-          <li>Right-click the element → Capture node screenshot</li>
           <li>
-            Or use a browser extension like "GoFullPage" or "Awesome Screenshot"
+            Run
+            <code class="bg-zinc-800 px-1.5 py-0.5 rounded text-emerald-400"
+              >pnpm run capture articles/01.html</code
+            >
+            to automatically capture all visuals
           </li>
-          <li>For best quality, screenshot at 2x and resize down</li>
+          <li>
+            Images are saved to
+            <code class="bg-zinc-800 px-1.5 py-0.5 rounded text-emerald-400"
+              >articles/images/&lt;issue&gt;/</code
+            >
+          </li>
+          <li>
+            Or manually: Right-click poster → Inspect → Capture node screenshot
+          </li>
         </ol>
         <div class="mt-4 pt-4 border-t border-zinc-800">
           <h4 class="font-bold text-white mb-2">Brand Colors</h4>

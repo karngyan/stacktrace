@@ -1,0 +1,14 @@
+{
+  "name": "stacktrace",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Visual capture tool for Stacktrace newsletter",
+  "scripts": {
+    "capture": "node capture-visuals.js",
+    "capture:00": "node capture-visuals.js articles/00.html",
+    "capture:01": "node capture-visuals.js articles/01.html"
+  },
+  "dependencies": {
+    "puppeteer": "^24.31.0"
+  }
+}
