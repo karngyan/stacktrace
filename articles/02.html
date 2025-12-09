@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stacktrace #02 - How nginx Tells Time Without Asking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Figtree", sans-serif;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              figtree: ["Figtree", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                dark: "#09090b",
+                darker: "#030303",
+                accent: "#10b981",
+                accent2: "#34d399",
+                muted: "#52525b",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-zinc-950 min-h-screen p-8">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <!-- Header -->
+      <div class="flex items-center justify-between">
+        <div>
+          <a
+            href="../index.html"
+            class="text-zinc-500 text-sm hover:text-zinc-300 mb-2 inline-block"
+            >← Back to Brand</a
+          >
+          <h1 class="text-white text-2xl font-bold">Stacktrace #02</h1>
+          <p class="text-zinc-500 text-sm mt-1">
+            How nginx Tells Time Without Asking
+          </p>
+          <a
+            href="02.md"
+            class="text-emerald-400 text-sm hover:text-emerald-300 mt-2 inline-block"
+            >→ View Content (.md)</a
+          >
+        </div>
+        <div class="text-zinc-600 text-sm font-mono">nginx/nginx</div>
+      </div>
+
+      <!-- DARK POSTER -->
+      <div>
+        <h2 class="text-white text-lg mb-4">Dark Style (600x600)</h2>
+
+        <div
+          id="poster-dark"
+          class="w-[600px] h-[600px] bg-brand-dark relative overflow-hidden flex flex-col justify-between p-10"
+          style="background: linear-gradient(145deg, #09090b 0%, #0f0f12 100%)"
+        >
+          <!-- Code lines decoration -->
+          <div
+            class="absolute top-0 right-0 w-64 h-full opacity-5 font-mono text-sm text-brand-accent leading-relaxed p-4 overflow-hidden"
+          >
+            #define NGX_TIME_SLOTS 64<br /><br />
+            static ngx_time_t<br />
+            &nbsp;&nbsp;cached_time[64];<br /><br />
+            volatile ngx_time_t<br />
+            &nbsp;&nbsp;*ngx_cached_time;<br /><br />
+            ngx_memory_barrier();<br />
+            ngx_cached_time = tp;
+          </div>
+
+          <!-- Top section -->
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="text-brand-accent text-sm font-bold tracking-wider">
+                STACKTRACE
+              </div>
+              <div class="flex-1 h-px bg-zinc-800"></div>
+              <div class="text-zinc-600 text-sm font-mono">#02</div>
+            </div>
+          </div>
+
+          <!-- Main title -->
+          <div class="relative z-10 flex-1 flex flex-col justify-center">
+            <h1 class="text-white text-4xl font-extrabold leading-tight mb-5">
+              How nginx<br />
+              <span class="text-brand-accent">Tells Time</span><br />
+              Without Asking
+            </h1>
+            <p class="text-zinc-500 text-lg leading-relaxed">
+              64 rotating slots, a memory barrier,<br />
+              and a bet on 64 seconds.
+            </p>
+          </div>
+
+          <!-- Bottom section -->
+          <div class="relative z-10 flex justify-between items-end">
+            <div class="flex items-center gap-3">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D5603AQFHIgOiqEDSNQ/profile-displayphoto-shrink_800_800/B56ZYpjyJKHQAc-/0/1744453969775?e=1766016000&v=beta&t=ESRbMnoMriJeOwFpLl7vG1yFCb4VkYKK7_ajnjDxXRE"
+                alt="@karngyan"
+                class="w-12 h-12 rounded-full object-cover"
+              />
+              <div class="text-zinc-500 text-sm">@karngyan</div>
+            </div>
+            <div class="text-zinc-600 text-sm font-mono">nginx/nginx</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIGHT POSTER -->
+      <div>
+        <h2 class="text-white text-lg mb-4">Light Style (600x600)</h2>
+
+        <div
+          id="poster-light"
+          class="w-[600px] h-[600px] bg-white relative overflow-hidden flex flex-col justify-between p-10"
+        >
+          <!-- Accent bar -->
+          <div
+            class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-emerald-500 to-emerald-300"
+          ></div>
+
+          <!-- Top section -->
+          <div class="relative z-10">
+            <div class="text-emerald-600 text-sm font-bold tracking-wider">
+              STACKTRACE #02
+            </div>
+          </div>
+
+          <!-- Main title -->
+          <div class="relative z-10 flex-1 flex flex-col justify-center">
+            <h1
+              class="text-neutral-900 text-4xl font-extrabold leading-tight mb-4"
+            >
+              How nginx Tells Time Without Asking
+            </h1>
+            <p class="text-neutral-500 text-lg leading-relaxed">
+              64 rotating slots, a memory barrier, and a bet on 64 seconds.
+            </p>
+          </div>
+
+          <!-- Code snippet -->
+          <div
+            class="relative z-10 bg-zinc-100 rounded-xl p-5 font-mono text-sm text-zinc-700 mb-6"
+          >
+            <span class="text-zinc-500">#define</span>
+            <span class="text-emerald-700"> NGX_TIME_SLOTS</span>
+            <span class="text-zinc-500"> 64</span><br />
+            <span class="text-zinc-500">volatile ngx_time_t</span>
+            <span class="text-emerald-700"> *ngx_cached_time</span>;
+          </div>
+
+          <!-- Bottom section -->
+          <div class="relative z-10 flex justify-between items-center">
+            <div class="text-zinc-400 text-sm">by @karngyan</div>
+            <div class="text-zinc-400 text-sm font-mono">
+              src/core/ngx_times.c
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SQUARE SOCIAL (for Instagram/Twitter) -->
+      <div>
+        <h2 class="text-white text-lg mb-4">Square Social (600x600)</h2>
+
+        <div
+          id="poster-social"
+          class="w-[600px] h-[600px] bg-brand-dark relative overflow-hidden flex flex-col justify-center items-center p-10"
+          style="
+            background: linear-gradient(
+              145deg,
+              #09090b 0%,
+              #0c0c0e 50%,
+              #09090b 100%
+            );
+          "
+        >
+          <!-- Grid pattern overlay -->
+          <div
+            class="absolute inset-0 opacity-10"
+            style="
+              background-image: linear-gradient(
+                  rgba(16, 185, 129, 0.3) 1px,
+                  transparent 1px
+                ),
+                linear-gradient(
+                  90deg,
+                  rgba(16, 185, 129, 0.3) 1px,
+                  transparent 1px
+                );
+              background-size: 40px 40px;
+            "
+          ></div>
+
+          <!-- Glow effect -->
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full opacity-20"
+            style="
+              background: radial-gradient(circle, #10b981 0%, transparent 70%);
+            "
+          ></div>
+
+          <!-- Content -->
+          <div class="relative z-10 text-center">
+            <div
+              class="text-brand-accent text-sm font-bold tracking-wider mb-6"
+            >
+              STACKTRACE #02
+            </div>
+            <h1
+              class="text-white text-4xl font-black tracking-tight mb-6 leading-tight"
+            >
+              How nginx<br />Tells Time<br />Without Asking
+            </h1>
+            <div class="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
+            <p class="text-zinc-500 text-base leading-relaxed mb-8">
+              64 rotating slots, a memory barrier,<br />
+              and a bet on 64 seconds.
+            </p>
+            <div class="text-brand-muted text-sm font-mono">by @karngyan</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WIDE BANNER (for Twitter/LinkedIn header) -->
+      <div>
+        <h2 class="text-white text-lg mb-4">Wide Banner (1200x600)</h2>
+
+        <div
+          id="poster-banner"
+          class="w-[1200px] h-[600px] bg-brand-dark relative overflow-hidden flex p-12"
+          style="background: linear-gradient(145deg, #09090b 0%, #0f0f12 100%)"
+        >
+          <!-- Code lines decoration -->
+          <div
+            class="absolute top-0 right-0 w-96 h-full opacity-5 font-mono text-base text-brand-accent leading-relaxed p-6 overflow-hidden"
+          >
+            #define NGX_TIME_SLOTS 64<br /><br />
+            static ngx_time_t<br />
+            &nbsp;&nbsp;cached_time[NGX_TIME_SLOTS];<br /><br />
+            volatile ngx_time_t *ngx_cached_time;<br /><br />
+            // memory barrier ensures<br />
+            // writes complete before<br />
+            // pointer swap<br /><br />
+            ngx_memory_barrier();<br />
+            ngx_cached_time = tp;
+          </div>
+
+          <!-- Left content -->
+          <div
+            class="relative z-10 flex flex-col justify-between flex-1 max-w-2xl"
+          >
+            <div class="flex items-center gap-3">
+              <div class="text-brand-accent text-base font-bold tracking-wider">
+                STACKTRACE
+              </div>
+              <div class="w-24 h-px bg-zinc-800"></div>
+              <div class="text-zinc-600 text-base font-mono">#02</div>
+            </div>
+
+            <div>
+              <h1 class="text-white text-5xl font-extrabold leading-tight mb-6">
+                How nginx<br />
+                <span class="text-brand-accent">Tells Time</span><br />
+                Without Asking
+              </h1>
+              <p class="text-zinc-500 text-xl leading-relaxed max-w-lg">
+                64 rotating slots, a memory barrier,<br />
+                and a bet on 64 seconds.
+              </p>
+            </div>
+
+            <div class="flex justify-between items-end">
+              <div class="flex items-center gap-3">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D5603AQFHIgOiqEDSNQ/profile-displayphoto-shrink_800_800/B56ZYpjyJKHQAc-/0/1744453969775?e=1766016000&v=beta&t=ESRbMnoMriJeOwFpLl7vG1yFCb4VkYKK7_ajnjDxXRE"
+                  alt="@karngyan"
+                  class="w-14 h-14 rounded-full object-cover"
+                />
+                <div class="text-zinc-500 text-base">@karngyan</div>
+              </div>
+              <div class="text-zinc-600 text-base font-mono">nginx/nginx</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LINKEDIN COVER (for article cover photo) -->
+      <div>
+        <h2 class="text-white text-lg mb-4">LinkedIn Cover (1920x1080)</h2>
+
+        <div
+          id="poster-linkedin-cover"
+          class="w-[1920px] h-[1080px] bg-[#0a0a0a] relative overflow-hidden flex items-center justify-center"
+        >
+          <!-- Centered container -->
+          <div class="font-mono text-left">
+            <div class="text-zinc-700 text-3xl mb-6">
+              // The 64-slot time cache
+            </div>
+            <div class="text-5xl leading-relaxed mb-4">
+              <span class="text-zinc-500">#define</span>
+              <span class="text-emerald-400"> NGX_TIME_SLOTS</span>
+              <span class="text-zinc-300"> 64</span>
+            </div>
+            <div class="text-5xl leading-relaxed mb-8">
+              <span class="text-zinc-500">volatile ngx_time_t</span>
+              <span class="text-emerald-400"> *ngx_cached_time</span>;
+            </div>
+            <div class="text-zinc-300 text-5xl font-bold mt-12">
+              Lock-free reads.<br />
+              <span class="text-emerald-400">Millions per second.</span>
+            </div>
+            <div class="text-zinc-700 text-2xl mt-10">
+              src/core/ngx_times.c:24-30
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="border-t border-zinc-800 my-16"></div>
+      <h2 class="text-white text-xl font-semibold mb-8">Blog Visuals</h2>
+
+      <!-- VISUAL #1: Syscall Cost -->
+      <div>
+        <h3 class="text-zinc-400 text-sm mb-4">Syscall Cost Breakdown</h3>
+
+        <div
+          id="visual-syscall"
+          class="w-[640px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="text-zinc-300 text-lg font-semibold mb-6">
+            Why gettimeofday() is Expensive
+          </div>
+
+          <div class="space-y-3">
+            <!-- Step 1 -->
+            <div class="flex items-center gap-4">
+              <div
+                class="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-300 text-sm font-bold"
+              >
+                1
+              </div>
+              <div class="flex-1 bg-zinc-900 rounded p-3">
+                <div class="text-zinc-300 text-sm">Program stops running</div>
+              </div>
+              <div class="text-zinc-600 text-xs w-24 text-right">user mode</div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="flex justify-center">
+              <div class="text-zinc-600">↓ context switch</div>
+            </div>
+
+            <!-- Step 2-4 (kernel) -->
+            <div class="border border-zinc-700 rounded-lg p-4 bg-zinc-900/50">
+              <div class="text-zinc-500 text-xs mb-3">KERNEL MODE</div>
+              <div class="space-y-2">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-emerald-300 text-xs font-bold"
+                  >
+                    2
+                  </div>
+                  <div class="text-zinc-400 text-sm">Read hardware clock</div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-emerald-300 text-xs font-bold"
+                  >
+                    3
+                  </div>
+                  <div class="text-zinc-400 text-sm">Convert to timestamp</div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-emerald-300 text-xs font-bold"
+                  >
+                    4
+                  </div>
+                  <div class="text-zinc-400 text-sm">Copy to userspace</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="flex justify-center">
+              <div class="text-zinc-600">↓ context switch</div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="flex items-center gap-4">
+              <div
+                class="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-300 text-sm font-bold"
+              >
+                5
+              </div>
+              <div class="flex-1 bg-zinc-900 rounded p-3">
+                <div class="text-zinc-300 text-sm">Program resumes</div>
+              </div>
+              <div class="text-zinc-600 text-xs w-24 text-right">user mode</div>
+            </div>
+          </div>
+
+          <div class="mt-6 border-t border-zinc-800 pt-4">
+            <div class="flex justify-between items-center">
+              <div class="text-zinc-500 text-xs">Cost per syscall:</div>
+              <div class="text-emerald-400 font-mono text-sm">~100-1000 ns</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #2: The Rotating Slots -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">The 64 Rotating Slots</h3>
+
+        <div
+          id="visual-slots"
+          class="w-[720px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="text-zinc-300 text-lg font-semibold mb-6">
+            Write to a different slot, then swap the pointer
+          </div>
+
+          <!-- Before state -->
+          <div class="mb-6">
+            <div class="text-zinc-500 text-xs mb-2">
+              BEFORE: Readers use slot 0
+            </div>
+            <div class="flex items-end gap-1">
+              <div
+                class="w-16 h-20 bg-emerald-500/30 border-2 border-emerald-400 rounded flex flex-col items-center justify-center"
+              >
+                <div class="text-emerald-300 text-xs font-mono">[0]</div>
+                <div class="text-emerald-400 text-xs mt-1">14:30:00</div>
+              </div>
+              <div
+                class="w-12 h-14 bg-zinc-800 border border-zinc-700 rounded flex items-center justify-center"
+              >
+                <div class="text-zinc-500 text-xs font-mono">[1]</div>
+              </div>
+              <div
+                class="w-12 h-14 bg-zinc-800 border border-zinc-700 rounded flex items-center justify-center"
+              >
+                <div class="text-zinc-500 text-xs font-mono">[2]</div>
+              </div>
+              <div
+                class="w-12 h-14 bg-zinc-800 border border-zinc-700 rounded flex items-center justify-center"
+              >
+                <div class="text-zinc-500 text-xs font-mono">...</div>
+              </div>
+              <div
+                class="w-12 h-14 bg-zinc-800 border border-zinc-700 rounded flex items-center justify-center"
+              >
+                <div class="text-zinc-500 text-xs font-mono">[63]</div>
+              </div>
+            </div>
+            <div class="text-emerald-400 text-xs mt-2">↑ ngx_cached_time</div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="flex items-center gap-4 my-4">
+            <div class="flex-1 h-px bg-zinc-800"></div>
+            <div class="text-zinc-500 text-sm">
+              Writer updates slot 1, swaps pointer
+            </div>
+            <div class="flex-1 h-px bg-zinc-800"></div>
+          </div>
+
+          <!-- After state -->
+          <div>
+            <div class="text-zinc-500 text-xs mb-2">
+              AFTER: Readers use slot 1
+            </div>
+            <div class="flex items-end gap-1">
+              <div
+                class="w-12 h-14 bg-zinc-800 border border-zinc-700 rounded flex flex-col items-center justify-center"
+              >
+                <div class="text-zinc-500 text-xs font-mono">[0]</div>
+                <div class="text-zinc-600 text-xs mt-1">14:30:00</div>
+              </div>
+              <div
+                class="w-16 h-20 bg-emerald-500/30 border-2 border-emerald-400 rounded flex flex-col items-center justify-center"
+              >
+                <div class="text-emerald-300 text-xs font-mono">[1]</div>
+                <div class="text-emerald-400 text-xs mt-1">14:30:01</div>
+              </div>
+              <div
+                class="w-12 h-14 bg-zinc-800 border border-zinc-700 rounded flex items-center justify-center"
+              >
+                <div class="text-zinc-500 text-xs font-mono">[2]</div>
+              </div>
+              <div
+                class="w-12 h-14 bg-zinc-800 border border-zinc-700 rounded flex items-center justify-center"
+              >
+                <div class="text-zinc-500 text-xs font-mono">...</div>
+              </div>
+              <div
+                class="w-12 h-14 bg-zinc-800 border border-zinc-700 rounded flex items-center justify-center"
+              >
+                <div class="text-zinc-500 text-xs font-mono">[63]</div>
+              </div>
+            </div>
+            <div class="ml-14 text-emerald-400 text-xs mt-2">
+              ↑ ngx_cached_time
+            </div>
+          </div>
+
+          <div class="mt-6 border-t border-zinc-800 pt-4">
+            <div class="text-zinc-500 text-xs">
+              Readers never see half-written data. The new slot is complete
+              before the pointer moves.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #3: Memory Barrier -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">The Memory Barrier Problem</h3>
+
+        <div
+          id="visual-barrier"
+          class="w-[680px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="grid grid-cols-2 gap-6">
+            <!-- Without barrier -->
+            <div>
+              <div class="text-red-400 text-sm font-semibold mb-4">
+                ❌ Without Barrier
+              </div>
+              <div class="font-mono text-xs space-y-2 bg-zinc-900 rounded p-4">
+                <div class="text-zinc-500">// CPU might reorder!</div>
+                <div>
+                  <span class="text-zinc-400">1.</span>
+                  <span class="text-amber-300">write data</span>
+                </div>
+                <div>
+                  <span class="text-zinc-400">2.</span>
+                  <span class="text-emerald-300">swap pointer</span>
+                </div>
+              </div>
+              <div class="mt-4 text-xs">
+                <div class="text-zinc-500 mb-2">What could happen:</div>
+                <div class="space-y-1 text-zinc-400">
+                  <div>1. CPU swaps pointer first</div>
+                  <div>2. Reader sees new pointer</div>
+                  <div>3. Reader reads empty slot</div>
+                  <div class="text-red-400">4. 💥 Garbage!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- With barrier -->
+            <div>
+              <div class="text-emerald-400 text-sm font-semibold mb-4">
+                ✓ With Barrier
+              </div>
+              <div class="font-mono text-xs space-y-2 bg-zinc-900 rounded p-4">
+                <div>
+                  <span class="text-zinc-400">1.</span>
+                  <span class="text-amber-300">write data</span>
+                </div>
+                <div
+                  class="text-emerald-400 border-t border-b border-emerald-400/30 py-1"
+                >
+                  ── ngx_memory_barrier() ──
+                </div>
+                <div>
+                  <span class="text-zinc-400">2.</span>
+                  <span class="text-emerald-300">swap pointer</span>
+                </div>
+              </div>
+              <div class="mt-4 text-xs">
+                <div class="text-zinc-500 mb-2">Guaranteed order:</div>
+                <div class="space-y-1 text-zinc-400">
+                  <div>1. All writes complete</div>
+                  <div>2. Barrier enforces order</div>
+                  <div>3. Then pointer swaps</div>
+                  <div class="text-emerald-400">4. ✓ Data is ready!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 border-t border-zinc-800 pt-4">
+            <div class="font-mono text-xs text-zinc-500">
+              On x86:
+              <span class="text-zinc-400"
+                >__asm__ volatile ("" ::: "memory")</span
+              >
+              — just a compiler hint
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #4: Why 64 Slots -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">Why 64 Slots?</h3>
+
+        <div
+          id="visual-why64"
+          class="w-[600px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="text-zinc-300 text-sm mb-6">The only failure mode:</div>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex gap-3 items-start">
+              <div class="text-zinc-600 w-4">1</div>
+              <div class="text-zinc-400">Reader starts copying from slot 0</div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="text-zinc-600 w-4">2</div>
+              <div class="text-zinc-400">Reader gets preempted by OS</div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="text-zinc-600 w-4">3</div>
+              <div class="text-zinc-400">
+                Writer cycles through ALL 64 slots
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="text-zinc-600 w-4">4</div>
+              <div class="text-zinc-400">Writer overwrites slot 0</div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="text-zinc-600 w-4">5</div>
+              <div class="text-red-400">Reader resumes → corrupted data</div>
+            </div>
+          </div>
+
+          <div class="mt-6 bg-zinc-900 rounded-lg p-4">
+            <div class="text-zinc-500 text-xs mb-2">For this to happen:</div>
+            <div class="text-emerald-400 text-2xl font-bold">
+              Thread must sleep for 64+ seconds
+            </div>
+            <div class="text-zinc-500 text-xs mt-2">
+              (1 slot per second × 64 slots)
+            </div>
+          </div>
+
+          <div class="mt-4 border-t border-zinc-800 pt-4">
+            <div class="text-zinc-500 text-xs italic">
+              "If your thread isn't scheduled for 64 seconds, a wrong timestamp
+              is the least of your problems."
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #5: Pattern Applications -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">Where This Pattern Appears</h3>
+
+        <div
+          id="visual-pattern"
+          class="w-[480px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="text-zinc-300 text-sm mb-4">
+            Write to shadow copy → Swap pointer
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-3 h-3 bg-emerald-400 rounded-full"></div>
+              <div class="text-zinc-300">Database page buffers</div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-3 h-3 bg-emerald-400 rounded-full"></div>
+              <div class="text-zinc-300">Game engine double-buffering</div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-3 h-3 bg-emerald-400 rounded-full"></div>
+              <div class="text-zinc-300">Lock-free queues</div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-3 h-3 bg-emerald-400 rounded-full"></div>
+              <div class="text-zinc-300">RCU (Read-Copy-Update) in Linux</div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-3 h-3 bg-emerald-400 rounded-full"></div>
+              <div class="text-zinc-300 font-bold">nginx's time cache</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #6: The DST Comment -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">The DST Comment</h3>
+
+        <div
+          id="visual-dst"
+          class="w-[640px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="font-mono text-sm leading-relaxed text-zinc-500">
+            <div class="text-zinc-600">/*</div>
+            <div>* localtime() and localtime_r() are not</div>
+            <div>* Async-Signal-Safe functions, therefore,</div>
+            <div>* they must not be called by a signal handler,</div>
+            <div>* so we use the cached GMT offset value.</div>
+            <div class="text-emerald-400 mt-2">
+              * Fortunately the value is changed
+            </div>
+            <div class="text-emerald-400">* only two times a year.</div>
+            <div class="text-zinc-600">*/</div>
+          </div>
+
+          <div class="mt-4 border-t border-zinc-800 pt-4">
+            <div class="text-zinc-500 text-xs">
+              Referring to daylight saving time. They cache the timezone offset
+              and accept it might be briefly wrong during DST transitions.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL #7: Lessons -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">Key Takeaways</h3>
+
+        <div
+          id="visual-lessons"
+          class="w-[560px] bg-[#0a0a0a] p-8 border border-zinc-800"
+        >
+          <div class="space-y-4 text-sm">
+            <div class="flex gap-4">
+              <span class="text-zinc-600 w-4">1</span>
+              <span class="text-zinc-400"
+                >Syscalls are expensive at scale — cache aggressively</span
+              >
+            </div>
+            <div class="flex gap-4">
+              <span class="text-zinc-600 w-4">2</span>
+              <span class="text-zinc-400"
+                >Write-to-shadow + pointer-swap enables lock-free reads</span
+              >
+            </div>
+            <div class="flex gap-4">
+              <span class="text-zinc-600 w-4">3</span>
+              <span class="text-zinc-400"
+                >Memory barriers prevent CPU reordering disasters</span
+              >
+            </div>
+            <div class="flex gap-4">
+              <span class="text-zinc-600 w-4">4</span>
+              <span class="text-zinc-400"
+                >Practical engineering accepts unlikely failure modes</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="border-t border-zinc-800 my-16"></div>
+      <h2 class="text-white text-xl font-semibold mb-8">Code Snippets</h2>
+
+      <!-- CODE #1: The 64 Slots Definition -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">The 64 Slots Definition</h3>
+
+        <div
+          id="code-slots-def"
+          class="w-[680px] bg-[#0a0a0a] p-6 border border-zinc-800 rounded-lg"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-zinc-500 text-xs font-mono">
+              src/core/ngx_times.c
+            </div>
+            <div class="flex gap-1.5">
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+            </div>
+          </div>
+          <div class="font-mono text-sm leading-relaxed">
+            <div>
+              <span class="text-zinc-500">#define</span>
+              <span class="text-emerald-400">NGX_TIME_SLOTS</span>
+              <span class="text-amber-300">64</span>
+            </div>
+            <div class="mt-3">
+              <span class="text-zinc-500">static</span>
+              <span class="text-blue-400">ngx_time_t</span>
+              <span class="text-zinc-300">cached_time</span>[<span
+                class="text-emerald-400"
+                >NGX_TIME_SLOTS</span
+              >];
+            </div>
+            <div>
+              <span class="text-zinc-500">static</span>
+              <span class="text-blue-400">u_char</span>
+              <span class="text-zinc-300">cached_http_time</span>[<span
+                class="text-emerald-400"
+                >NGX_TIME_SLOTS</span
+              >]
+            </div>
+            <div class="pl-24">
+              <span class="text-zinc-500">[sizeof(</span
+              ><span class="text-amber-300"
+                >"Mon, 28 Sep 1970 06:00:00 GMT"</span
+              ><span class="text-zinc-500">)];</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CODE #2: The Volatile Pointer -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">The Volatile Pointer</h3>
+
+        <div
+          id="code-volatile-ptr"
+          class="w-[560px] bg-[#0a0a0a] p-6 border border-zinc-800 rounded-lg"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-zinc-500 text-xs font-mono">
+              src/core/ngx_times.c:30
+            </div>
+            <div class="flex gap-1.5">
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+            </div>
+          </div>
+          <div class="font-mono text-sm leading-relaxed">
+            <div>
+              <span class="text-zinc-500">volatile</span>
+              <span class="text-blue-400">ngx_time_t</span>
+              <span class="text-zinc-500">*</span
+              ><span class="text-emerald-400">ngx_cached_time</span>;
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-zinc-800">
+            <div class="text-zinc-500 text-xs">
+              Readers just dereference this pointer — no locks!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CODE #3: Reader Code -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">How Readers Read (Lock-Free)</h3>
+
+        <div
+          id="code-reader"
+          class="w-[480px] bg-[#0a0a0a] p-6 border border-zinc-800 rounded-lg"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-zinc-500 text-xs font-mono">
+              reading the cached time
+            </div>
+            <div class="flex gap-1.5">
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+            </div>
+          </div>
+          <div class="font-mono text-sm leading-relaxed">
+            <div>
+              <span class="text-blue-400">time_t</span>
+              <span class="text-zinc-300">now</span>
+              <span class="text-zinc-500">=</span>
+              <span class="text-emerald-400">ngx_cached_time</span
+              ><span class="text-zinc-500">-></span
+              ><span class="text-zinc-300">sec</span>;
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-zinc-800">
+            <div class="text-zinc-500 text-xs">
+              That's it. No lock. No waiting. Just a pointer dereference.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CODE #4: Memory Barrier -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">The Memory Barrier</h3>
+
+        <div
+          id="code-barrier"
+          class="w-[600px] bg-[#0a0a0a] p-6 border border-zinc-800 rounded-lg"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-zinc-500 text-xs font-mono">
+              src/core/ngx_times.c:182-184
+            </div>
+            <div class="flex gap-1.5">
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+            </div>
+          </div>
+          <div class="font-mono text-sm leading-relaxed">
+            <div class="text-zinc-600">// Fill in the new slot first</div>
+            <div>
+              <span class="text-zinc-300">cached_time</span>[<span
+                class="text-zinc-300"
+                >slot</span
+              >].<span class="text-zinc-300">sec</span>
+              <span class="text-zinc-500">=</span>
+              <span class="text-zinc-300">sec</span>;
+            </div>
+            <div>
+              <span class="text-zinc-300">cached_time</span>[<span
+                class="text-zinc-300"
+                >slot</span
+              >].<span class="text-zinc-300">msec</span>
+              <span class="text-zinc-500">=</span>
+              <span class="text-zinc-300">msec</span>;
+            </div>
+            <div class="mt-3"></div>
+            <div
+              class="text-emerald-400 bg-emerald-500/10 -mx-2 px-2 py-1 rounded"
+            >
+              ngx_memory_barrier();
+            </div>
+            <div class="mt-3"></div>
+            <div class="text-zinc-600">// Then swap the pointer</div>
+            <div>
+              <span class="text-emerald-400">ngx_cached_time</span>
+              <span class="text-zinc-500">=</span>
+              <span class="text-zinc-300">tp</span>;
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CODE #5: x86 Memory Barrier -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">
+          x86 Memory Barrier (Compiler Hint)
+        </h3>
+
+        <div
+          id="code-asm"
+          class="w-[560px] bg-[#0a0a0a] p-6 border border-zinc-800 rounded-lg"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-zinc-500 text-xs font-mono">
+              src/os/unix/ngx_gcc_atomic_x86.h:124
+            </div>
+            <div class="flex gap-1.5">
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+            </div>
+          </div>
+          <div class="font-mono text-sm leading-relaxed">
+            <div>
+              <span class="text-zinc-500">#define</span>
+              <span class="text-emerald-400">ngx_memory_barrier</span>() \
+            </div>
+            <div class="pl-4">
+              <span class="text-blue-400">__asm__</span>
+              <span class="text-zinc-500">volatile</span> (<span
+                class="text-amber-300"
+                >""</span
+              >
+              ::: <span class="text-amber-300">"memory"</span>)
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-zinc-800">
+            <div class="text-zinc-500 text-xs">
+              On x86, just tells the compiler "don't reorder." CPU already has
+              strong ordering.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CODE #6: HTTP Date Header -->
+      <div class="mt-12">
+        <h3 class="text-zinc-400 text-sm mb-4">
+          HTTP Response with Date Header
+        </h3>
+
+        <div
+          id="code-http-header"
+          class="w-[480px] bg-[#0a0a0a] p-6 border border-zinc-800 rounded-lg"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-zinc-500 text-xs font-mono">HTTP response</div>
+            <div class="flex gap-1.5">
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+            </div>
+          </div>
+          <div class="font-mono text-sm leading-relaxed">
+            <div>
+              <span class="text-zinc-300">HTTP/1.1</span>
+              <span class="text-emerald-400">200 OK</span>
+            </div>
+            <div>
+              <span class="text-zinc-500">Date:</span>
+              <span class="text-amber-300">Tue, 09 Dec 2025 14:30:00 GMT</span>
+            </div>
+            <div>
+              <span class="text-zinc-500">Content-Type:</span>
+              <span class="text-zinc-300">text/html</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INSTRUCTIONS -->
+      <div class="bg-zinc-900 rounded-lg p-6 text-zinc-300 text-sm mt-12">
+        <h3 class="font-bold text-white mb-2">How to Export</h3>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>Right-click on a poster/visual → Inspect</li>
+          <li>Right-click the element → Capture node screenshot</li>
+          <li>
+            Or use a browser extension like "GoFullPage" or "Awesome Screenshot"
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

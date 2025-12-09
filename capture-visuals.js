@@ -29,6 +29,7 @@ const CONFIG = {
   capturePatterns: [
     "poster-", // poster-dark, poster-light, poster-social, etc.
     "visual-", // visual-prng, visual-magic, etc.
+    "code-", // code-slots-def, code-barrier, etc.
     "logo-", // logo-icon-only, etc.
     "brand-", // brand-poster
   ],
